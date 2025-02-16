@@ -1,0 +1,29 @@
+[remap]
+
+importer="Aseprite AnimatedSprite2D"
+type="PackedScene"
+uid="uid://dku1r0kqbcxk5"
+path="res://.godot/imported/me.aseprite-029ed67ac3571ac0368862ca605002d5.scn"
+
+[deps]
+
+source_file="res://assets/sprites/me.aseprite"
+dest_files=["res://.godot/imported/me.aseprite-029ed67ac3571ac0368862ca605002d5.scn"]
+
+[params]
+
+animation/default/name="default"
+animation/default/direction=0
+animation/default/repeat_count=0
+animation/autoplay_name=""
+atlas_textures/region_filter_clip_enabled=false
+root_node_name=""
+middle_import_script=""
+post_import_script=""
+sprite_sheet/edges_artifacts_avoidance_method=0
+sprite_sheet/sprites_surrounding_color=Color(1, 1, 1, 0)
+sprite_sheet/layout=0
+sprite_sheet/max_cells_in_strip=0
+sprite_sheet/trim_sprites_to_overall_min_size=true
+sprite_sheet/collapse_transparent_sprites=true
+sprite_sheet/merge_duplicated_sprites=true

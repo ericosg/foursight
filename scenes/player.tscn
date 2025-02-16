@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c107505xfsdgm"]
+
+[ext_resource type="PackedScene" uid="uid://dku1r0kqbcxk5" path="res://assets/sprites/me.aseprite" id="1_bl3fj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvn2d"]
+size = Vector2(10, 32)
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="me" parent="." instance=ExtResource("1_bl3fj")]
+position = Vector2(4, -16)
+autoplay = "idle"
+frame_progress = 0.606135
+
+[node name="me_col" type="CollisionShape2D" parent="."]
+position = Vector2(5, -16)
+shape = SubResource("RectangleShape2D_nvn2d")
