@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://m73upbduqrjw"]
+[gd_scene load_steps=7 format=4 uid="uid://m73upbduqrjw"]
 
 [ext_resource type="PackedScene" uid="uid://c107505xfsdgm" path="res://scenes/player.tscn" id="1_pkwk5"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ps2j2"]
@@ -19,13 +19,15 @@ texture = ExtResource("4_1y1qw")
 1:1/0 = 0
 2:1/0 = 0
 0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_k4skx"]
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_s81wo")
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ya433"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ps2j2")
@@ -45,17 +47,11 @@ scroll_active = false
 shortcut_keys_enabled = false
 structured_text_bidi_override = 5
 
-[node name="Ground" type="StaticBody2D" parent="."]
-
-[node name="Collision" type="CollisionShape2D" parent="Ground"]
-position = Vector2(3, 0)
-shape = SubResource("WorldBoundaryShape2D_ya433")
-
 [node name="Player" parent="." instance=ExtResource("1_pkwk5")]
+
+[node name="Camera" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
 
 [node name="Enemy1" parent="." instance=ExtResource("2_6074x")]
 position = Vector2(37, 0)
 scale = Vector2(-1, 1)
-
-[node name="Camera" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)

@@ -36,13 +36,15 @@ func _physics_process(delta: float) -> void:
 func _move(delta: float, direction: Vector2) -> void:
 	if direction.y < 0 and is_on_floor():
 		velocity.y = Settings.JumpVelocity * delta
-		_me.play("Walk")
 	if direction.x != 0:
 		velocity.x = direction.x * Settings.Speed * delta
-		_me.play("Run")
+		_me.play("Run2")
 	else:
 		velocity.x = move_toward(velocity.x, 0, Settings.Speed * delta)
+	if direction == Vector2.ZERO:
 		_me.play("Idle")
+	if !is_on_floor():
+		_me.play("Jump")
 
 func _trim_steps() -> void:
 	while _steps.size() > 0 and _steps[_steps.size() - 1] == Vector2.ZERO:

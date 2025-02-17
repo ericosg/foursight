@@ -4,16 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://1h4t0oxphyg6" path="res://assets/sprites/four.aseprite" id="2_xd56n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvn2d"]
-size = Vector2(10, 32)
+size = Vector2(13, 23)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_bxc1p")
 
 [node name="four" parent="." instance=ExtResource("2_xd56n")]
 position = Vector2(39, -16)
+animation = &"Jump"
 autoplay = "Idle"
-frame_progress = 0.36032
+frame_progress = 0.679715
 
 [node name="col" type="CollisionShape2D" parent="."]
-position = Vector2(5, -16)
+position = Vector2(6.5, -11.5)
 shape = SubResource("RectangleShape2D_nvn2d")
