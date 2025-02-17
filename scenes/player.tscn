@@ -10,7 +10,7 @@ size = Vector2(13, 23)
 [node name="four" parent="." instance=ExtResource("2_xd56n")]
 position = Vector2(39, -16)
 autoplay = "Idle"
-frame_progress = 0.800701
+frame_progress = 0.305177
 
 [node name="col" type="CollisionShape2D" parent="."]
 position = Vector2(6.5, -11.5)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://bt77kkd11urpb"]
+[gd_scene load_steps=11 format=4 uid="uid://bt77kkd11urpb"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_jgfql"]
 [ext_resource type="Texture2D" uid="uid://yj8u1au7ufro" path="res://assets/sprites/world.aseprite" id="2_5kyps"]
 [ext_resource type="PackedScene" uid="uid://c107505xfsdgm" path="res://scenes/player.tscn" id="3_66bkj"]
 [ext_resource type="PackedScene" uid="uid://fydasoc216lp" path="res://scenes/enemy1.tscn" id="4_jipo0"]
 [ext_resource type="Script" path="res://scripts/tutorial.gd" id="4_tpa0v"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="6_bl3rw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s81wo"]
 texture = ExtResource("2_5kyps")
@@ -57,6 +58,7 @@ shape = SubResource("WorldBoundaryShape2D_ft1xd")
 shape = SubResource("WorldBoundaryShape2D_dg703")
 
 [node name="Player" parent="." instance=ExtResource("3_66bkj")]
+position = Vector2(-70, 0)
 script = ExtResource("4_tpa0v")
 
 [node name="Camera" type="Camera2D" parent="Player"]
@@ -72,20 +74,24 @@ editor_draw_limits = true
 [node name="Enemy1" parent="." instance=ExtResource("4_jipo0")]
 position = Vector2(37, 0)
 scale = Vector2(-1, 1)
+script = ExtResource("6_bl3rw")
 
-[node name="Instructions" type="RichTextLabel" parent="."]
+[node name="Instructions" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -135.5
 offset_top = 16.0
 offset_right = 135.5
-offset_bottom = 112.0
+offset_bottom = 117.0
 grow_horizontal = 2
+theme_type_variation = &"TooltipLabel"
+theme_override_font_sizes/font_size = 12
 text = "use [arrow keys] or [wasd] to move
 you can also jump with [space]
 slash with [q] or [o]
 blast with [e] or [p]"
-scroll_active = false
-shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 structured_text_bidi_override = 5

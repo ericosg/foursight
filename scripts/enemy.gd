@@ -9,8 +9,8 @@ func _process(delta: float) -> void:
 	if Global.Frozen:
 		modulate = Settings.FrozenColor
 		_me.speed_scale = Settings.FrozenSpeedScale
-		_me.play("Idle")
+		_me.play("Frozen")
 	else:
 		modulate = Settings.NormalColor
 		_me.speed_scale = Settings.NormalSpeedScale
-		_me.play("Startup")
+		_me.play("Idle")

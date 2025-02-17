@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 @onready var _me = $four
 
+func _ready() -> void:
+	Global.Frozen = false
+
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		_me.play("Jump")
