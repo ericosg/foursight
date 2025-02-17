@@ -21,6 +21,7 @@ Thumbs.db
 
 bin/
 obj/
+tmp/
 *.sln
 *.csproj
 *.csproj.user
