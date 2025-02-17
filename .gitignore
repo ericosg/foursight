@@ -18,3 +18,13 @@ mono_crash.*.json
 
 .DS_Store
 Thumbs.db
+
+bin/
+obj/
+*.sln
+*.csproj
+*.csproj.user
+*.userprefs
+*.pidb
+*.suo
+*.user

@@ -1,8 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://m73upbduqrjw"]
+[gd_scene load_steps=7 format=3 uid="uid://m73upbduqrjw"]
 
 [ext_resource type="PackedScene" uid="uid://c107505xfsdgm" path="res://scenes/player.tscn" id="1_pkwk5"]
+[ext_resource type="Texture2D" uid="uid://cpk2vf7ufjj2x" path="res://assets/sprites/block16.aseprite" id="2_1e68b"]
+[ext_resource type="Texture2D" uid="uid://clg126y4b7v2b" path="res://assets/sprites/block32.aseprite" id="3_36f2b"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ya433"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_po4gn"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ww3j0"]
+size = Vector2(16, 32)
 
 [node name="Game" type="Node2D"]
 
@@ -14,5 +22,26 @@ zoom = Vector2(2, 2)
 [node name="Ground" type="StaticBody2D" parent="."]
 
 [node name="Collision" type="CollisionShape2D" parent="Ground"]
-position = Vector2(3, 1)
+position = Vector2(3, 0)
 shape = SubResource("WorldBoundaryShape2D_ya433")
+
+[node name="Block16" type="StaticBody2D" parent="."]
+position = Vector2(39, -16)
+
+[node name="Sprite" type="Sprite2D" parent="Block16"]
+texture = ExtResource("2_1e68b")
+
+[node name="Collision" type="CollisionShape2D" parent="Block16"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_po4gn")
+
+[node name="Block32" type="StaticBody2D" parent="."]
+position = Vector2(81, -16)
+
+[node name="Sprite" type="Sprite2D" parent="Block32"]
+position = Vector2(-13, 0)
+texture = ExtResource("3_36f2b")
+
+[node name="Collision" type="CollisionShape2D" parent="Block32"]
+position = Vector2(-13, 0)
+shape = SubResource("RectangleShape2D_ww3j0")
