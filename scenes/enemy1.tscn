@@ -1,13 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://fydasoc216lp"]
+[gd_scene load_steps=3 format=3 uid="uid://fydasoc216lp"]
 
 [ext_resource type="PackedScene" uid="uid://badd2n03jhbvo" path="res://assets/sprites/enemy1.aseprite" id="1_m6ahv"]
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_o47kd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m43df"]
 size = Vector2(14, 20)
 
 [node name="Enemy1" type="AnimatableBody2D"]
-script = ExtResource("1_o47kd")
 
 [node name="enemy" parent="." instance=ExtResource("1_m6ahv")]
 position = Vector2(7, -22)

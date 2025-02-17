@@ -6,7 +6,6 @@ func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
-	
 	if Global.Frozen:
 		modulate = Settings.FrozenColor
 		_me.speed_scale = Settings.FrozenSpeedScale

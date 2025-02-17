@@ -5,10 +5,8 @@ class_name Player
 var _steps = []
 
 func _physics_process(delta: float) -> void:
-
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
 	if Global.Frozen:
 		if is_on_floor():
 			modulate = Settings.FrozenColor
@@ -26,7 +24,6 @@ func _physics_process(delta: float) -> void:
 			_move(delta, current_direction)
 		if _steps.size() == 0:
 			Global.Frozen = true
-
 	if Input.is_action_just_released("start") and _steps.size() > 0:
 		_trim_steps()
 		Global.Frozen = false
