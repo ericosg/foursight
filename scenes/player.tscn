@@ -12,7 +12,7 @@ script = ExtResource("1_bxc1p")
 [node name="four" parent="." instance=ExtResource("2_xd56n")]
 position = Vector2(39, -16)
 autoplay = "Idle"
-frame_progress = 0.832841
+frame_progress = 0.36032
 
 [node name="col" type="CollisionShape2D" parent="."]
 position = Vector2(5, -16)
