@@ -35,15 +35,14 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _move(delta: float, direction: Vector2) -> void:
-	var vel: Vector2 = velocity
 	if direction.y < 0 and is_on_floor():
-		vel.y = Settings.JumpVelocity * delta
-	if direction != Vector2.ZERO:
-		vel.x = direction.x * Settings.Speed * delta
+		velocity.y = Settings.JumpVelocity * delta
+	if direction.x != 0:
+		velocity.x = direction.x * Settings.Speed * delta
 	else:
-		vel.x = move_toward(velocity.x, 0, Settings.Speed * delta)
-	velocity = vel
+		velocity.x = move_toward(velocity.x, 0, Settings.Speed * delta)
 
 func _trim_steps() -> void:
 	while steps.size() > 0 and steps[steps.size() - 1] == Vector2.ZERO:
 		steps.pop_back()
+	steps.push_back(Vector2.ZERO)
