@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpk2vf7ufjj2x"
-path="res://.godot/imported/block16.aseprite-8bff25363d4124b1a8faa833851a9fca.ctex"
+uid="uid://yj8u1au7ufro"
+path="res://.godot/imported/world.aseprite-98ee19fafeb31ba4d393d6faa01b9965.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/block16.aseprite"
-dest_files=["res://.godot/imported/block16.aseprite-8bff25363d4124b1a8faa833851a9fca.ctex"]
+source_file="res://assets/sprites/world.aseprite"
+dest_files=["res://.godot/imported/world.aseprite-98ee19fafeb31ba4d393d6faa01b9965.ctex"]
 
 [params]
 

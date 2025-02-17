@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clg126y4b7v2b"
-path="res://.godot/imported/block32.aseprite-8bc44cc3ea415a50b420acc6ebb1f056.ctex"
+uid="uid://5dttbqg0sw5m"
+path="res://.godot/imported/pallete.ase-b47c7bba2fa8fc9c2b88079c27041a6f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/block32.aseprite"
-dest_files=["res://.godot/imported/block32.aseprite-8bc44cc3ea415a50b420acc6ebb1f056.ctex"]
+source_file="res://assets/pallete.ase"
+dest_files=["res://.godot/imported/pallete.ase-b47c7bba2fa8fc9c2b88079c27041a6f.ctex"]
 
 [params]
 

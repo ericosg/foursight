@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c107505xfsdgm"]
 
-[ext_resource type="PackedScene" uid="uid://dku1r0kqbcxk5" path="res://assets/sprites/me.aseprite" id="1_bl3fj"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_bxc1p"]
+[ext_resource type="PackedScene" uid="uid://1h4t0oxphyg6" path="res://assets/sprites/four.aseprite" id="2_xd56n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvn2d"]
 size = Vector2(10, 32)
@@ -9,11 +9,11 @@ size = Vector2(10, 32)
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_bxc1p")
 
-[node name="me" parent="." instance=ExtResource("1_bl3fj")]
-position = Vector2(4, -16)
-autoplay = "idle"
-frame_progress = 0.606135
+[node name="four" parent="." instance=ExtResource("2_xd56n")]
+position = Vector2(39, -16)
+autoplay = "Idle"
+frame_progress = 0.832841
 
-[node name="me_col" type="CollisionShape2D" parent="."]
+[node name="col" type="CollisionShape2D" parent="."]
 position = Vector2(5, -16)
 shape = SubResource("RectangleShape2D_nvn2d")
