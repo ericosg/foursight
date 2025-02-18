@@ -63,21 +63,24 @@ fast_state = NodePath("../swift")
 hard_state = NodePath("../blast")
 animation_name = "Idle"
 
-[node name="swift" type="Node" parent="attacks" node_paths=PackedStringArray("sheath_state", "next_state")]
+[node name="swift" type="Node" parent="attacks" node_paths=PackedStringArray("sheath_state", "fast_state", "hard_state")]
 script = ExtResource("9_eodg7")
 sheath_state = NodePath("../sheath")
-next_state = NodePath("../swing")
+fast_state = NodePath("../swing")
+hard_state = NodePath("../blast")
 animation_name = "Swift"
 
-[node name="swing" type="Node" parent="attacks" node_paths=PackedStringArray("sheath_state", "next_state")]
+[node name="swing" type="Node" parent="attacks" node_paths=PackedStringArray("sheath_state", "fast_state", "hard_state")]
 script = ExtResource("9_eodg7")
 sheath_state = NodePath("../sheath")
-next_state = NodePath("../slash")
+fast_state = NodePath("../slash")
+hard_state = NodePath("../blast")
 animation_name = "Swing"
 
-[node name="slash" type="Node" parent="attacks" node_paths=PackedStringArray("sheath_state")]
+[node name="slash" type="Node" parent="attacks" node_paths=PackedStringArray("sheath_state", "hard_state")]
 script = ExtResource("9_eodg7")
 sheath_state = NodePath("../sheath")
+hard_state = NodePath("../blast")
 animation_name = "Slash"
 
 [node name="double" type="Node" parent="attacks" node_paths=PackedStringArray("sheath_state")]

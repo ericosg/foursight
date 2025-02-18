@@ -1,23 +1,26 @@
 extends State
 
 @export var sheath_state: State
-@export var next_state: State
+@export var fast_state: State
+@export var hard_state: State
 
-var can_next := false 
+var next_state: State
 
 func enter() -> void:
-	can_next = false
+	next_state = null
 	parent.can_move = false
 	super()
 
 func process_input(event: InputEvent) -> State:
-	if next_state && Input.is_action_just_pressed('fast'):
-		can_next = true
+	if fast_state && Input.is_action_just_pressed('fast'):
+		next_state = fast_state
+	if hard_state && Input.is_action_just_pressed('hard'):
+		next_state = hard_state
 	return null
 
 func process_frame(delta: float) -> State:
 	if parent.can_move:
-		return next_state if can_next else sheath_state
+		return next_state if next_state else sheath_state
 	return null
 
 func _on_animations_animation_finished() -> void:
