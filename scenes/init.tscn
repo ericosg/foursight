@@ -86,7 +86,7 @@ offset_right = 135.5
 offset_bottom = 117.0
 grow_horizontal = 2
 theme_type_variation = &"TooltipLabel"
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 8
 text = "use [arrow keys] or [wasd] to move
 you can also jump with [space]
 slash with [q] or [o]
@@ -95,3 +95,19 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 structured_text_bidi_override = 5
+
+[node name="Title" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 100)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -39.0
+offset_top = -16.0
+offset_right = 39.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 16
+text = "Foursight"

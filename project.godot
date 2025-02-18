@@ -25,6 +25,7 @@ Settings="*res://scripts/settings.gd"
 window/size/viewport_width=960
 window/size/viewport_height=540
 window/size/borderless=true
+window/stretch/mode="viewport"
 
 [dotnet]
 
@@ -33,6 +34,10 @@ project/assembly_name="foursight"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/nklbdev.importality/plugin.cfg")
+
+[gui]
+
+theme/custom_font="res://assets/fonts/04b_03/04B_03__.TTF"
 
 [input]
 
