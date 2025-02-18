@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c107505xfsdgm"]
+[gd_scene load_steps=13 format=3 uid="uid://c107505xfsdgm"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_o83fc"]
 [ext_resource type="PackedScene" uid="uid://1h4t0oxphyg6" path="res://assets/sprites/four.aseprite" id="2_xd56n"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/player/states/move.gd" id="7_xbqrr"]
 [ext_resource type="Script" path="res://scripts/player/states/sheath.gd" id="8_hcf8c"]
 [ext_resource type="Script" path="res://scripts/player/states/attack.gd" id="9_eodg7"]
+[ext_resource type="Script" path="res://scripts/player/states/blast.gd" id="10_rdvs8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvn2d"]
 size = Vector2(13, 23)
@@ -99,7 +100,7 @@ sheath_state = NodePath("../sheath")
 animation_name = "Double"
 
 [node name="blast" type="Node" parent="attacks" node_paths=PackedStringArray("sheath_state")]
-script = ExtResource("9_eodg7")
+script = ExtResource("10_rdvs8")
 sheath_state = NodePath("../sheath")
 animation_name = "Blast"
 

@@ -1,3 +1,4 @@
+class_name Attack
 extends State
 
 @export var sheath_state: State

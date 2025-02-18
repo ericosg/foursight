@@ -53,6 +53,12 @@ shape = SubResource("WorldBoundaryShape2D_ft1xd")
 [node name="floor" type="CollisionShape2D" parent="Walls"]
 shape = SubResource("WorldBoundaryShape2D_dg703")
 
+[node name="Enemy" parent="." instance=ExtResource("4_jipo0")]
+position = Vector2(37, 0)
+rotation = 3.14159
+scale = Vector2(1, -1)
+collision_layer = 3
+
 [node name="Player" parent="." instance=ExtResource("3_66bkj")]
 position = Vector2(-70, 0)
 
@@ -65,11 +71,6 @@ limit_bottom = 150
 limit_smoothed = true
 position_smoothing_enabled = true
 editor_draw_limits = true
-
-[node name="Enemy" parent="." instance=ExtResource("4_jipo0")]
-position = Vector2(37, 0)
-scale = Vector2(-1, 1)
-collision_layer = 3
 
 [node name="Instructions" type="Label" parent="."]
 anchors_preset = 5
