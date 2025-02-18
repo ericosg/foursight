@@ -4,7 +4,7 @@ extends Node
 
 var current_state: State
 
-func init(parent: Player) -> void:
+func init(parent: PhysicsBody2D) -> void:
 	for child in get_children():
 		child.parent = parent
 

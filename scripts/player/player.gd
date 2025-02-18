@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 @onready var animations: AnimatedSprite2D = $animations
+@onready var area: Area2D = $area
 @onready var movements = $movements
 @onready var attacks = $attacks
 

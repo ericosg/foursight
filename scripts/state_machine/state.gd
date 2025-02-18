@@ -4,7 +4,7 @@ extends Node
 @export var animation_name: String
 
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
-var parent: Player
+var parent: PhysicsBody2D
 
 func enter() -> void:
 	parent.animations.play(animation_name)
