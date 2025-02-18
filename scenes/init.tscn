@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://bt77kkd11urpb"]
+[gd_scene load_steps=8 format=4 uid="uid://bt77kkd11urpb"]
 
 [ext_resource type="Texture2D" uid="uid://yj8u1au7ufro" path="res://assets/sprites/world.aseprite" id="2_5kyps"]
 [ext_resource type="PackedScene" uid="uid://c107505xfsdgm" path="res://scenes/player.tscn" id="3_66bkj"]
-[ext_resource type="Script" path="res://scripts/player/player.gd" id="3_jjbjf"]
 [ext_resource type="PackedScene" uid="uid://fydasoc216lp" path="res://scenes/enemy1.tscn" id="4_jipo0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s81wo"]
@@ -56,7 +55,6 @@ shape = SubResource("WorldBoundaryShape2D_dg703")
 
 [node name="Player" parent="." instance=ExtResource("3_66bkj")]
 position = Vector2(-70, 0)
-script = ExtResource("3_jjbjf")
 
 [node name="Camera" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)

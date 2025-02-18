@@ -1,21 +1,27 @@
 class_name Player
 extends CharacterBody2D
 
-@onready
-var animations = $animations
-@onready
-var state_machine = $state_machine
+@onready var animations: AnimatedSprite2D = $animations
+@onready var movements = $movements
+@onready var attacks = $attacks
+
+var can_move := true
 
 func _ready() -> void:
-	# Initialize the state machine, passing a reference of the player to the states,
-	# that way they can move and react accordingly
-	state_machine.init(self)
+	movements.init(self)
+	attacks.init(self)
 
 func _unhandled_input(event: InputEvent) -> void:
-	state_machine.process_input(event)
+	if can_move:
+		movements.process_input(event)
+	attacks.process_input(event)
 
 func _physics_process(delta: float) -> void:
-	state_machine.process_physics(delta)
+	if can_move:
+		movements.process_physics(delta)
+	attacks.process_physics(delta)
 
 func _process(delta: float) -> void:
-	state_machine.process_frame(delta)
+	if can_move:
+		movements.process_frame(delta)
+	attacks.process_frame(delta)

@@ -1,11 +1,8 @@
 extends State
 
-@export
-var fall_state: State
-@export
-var idle_state: State
-@export
-var jump_state: State
+@export var fall_state: State
+@export var idle_state: State
+@export var jump_state: State
 
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed('up') and parent.is_on_floor():

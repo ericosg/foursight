@@ -1,52 +1,93 @@
-[gd_scene load_steps=8 format=3 uid="uid://c107505xfsdgm"]
+[gd_scene load_steps=11 format=3 uid="uid://c107505xfsdgm"]
 
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_o83fc"]
 [ext_resource type="PackedScene" uid="uid://1h4t0oxphyg6" path="res://assets/sprites/four.aseprite" id="2_xd56n"]
 [ext_resource type="PackedScene" uid="uid://bsgtr5x44hma2" path="res://scripts/state_machine/state_machine.tscn" id="3_fbdr2"]
 [ext_resource type="Script" path="res://scripts/player/states/fall.gd" id="4_wud64"]
 [ext_resource type="Script" path="res://scripts/player/states/idle.gd" id="5_rto7l"]
 [ext_resource type="Script" path="res://scripts/player/states/jump.gd" id="6_gm5qp"]
 [ext_resource type="Script" path="res://scripts/player/states/move.gd" id="7_xbqrr"]
+[ext_resource type="Script" path="res://scripts/player/states/sheath.gd" id="8_hcf8c"]
+[ext_resource type="Script" path="res://scripts/player/states/attack.gd" id="9_eodg7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvn2d"]
 size = Vector2(13, 23)
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_o83fc")
 
 [node name="animations" parent="." instance=ExtResource("2_xd56n")]
 position = Vector2(7, -16)
 autoplay = "Idle"
-frame_progress = 0.305177
 
 [node name="collisions" type="CollisionShape2D" parent="."]
 position = Vector2(6.5, -11.5)
 shape = SubResource("RectangleShape2D_nvn2d")
 
-[node name="state_machine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_fbdr2")]
+[node name="movements" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_fbdr2")]
 starting_state = NodePath("idle")
 
-[node name="fall" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "move_state")]
+[node name="fall" type="Node" parent="movements" node_paths=PackedStringArray("idle_state", "move_state")]
 script = ExtResource("4_wud64")
 idle_state = NodePath("../idle")
 move_state = NodePath("../move")
 animation_name = "Fall"
 
-[node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "jump_state", "move_state")]
+[node name="idle" type="Node" parent="movements" node_paths=PackedStringArray("fall_state", "jump_state", "move_state")]
 script = ExtResource("5_rto7l")
 fall_state = NodePath("../fall")
 jump_state = NodePath("../jump")
 move_state = NodePath("../move")
 animation_name = "Idle"
 
-[node name="jump" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "idle_state", "move_state")]
+[node name="jump" type="Node" parent="movements" node_paths=PackedStringArray("fall_state", "idle_state", "move_state")]
 script = ExtResource("6_gm5qp")
 fall_state = NodePath("../fall")
 idle_state = NodePath("../idle")
 move_state = NodePath("../move")
 animation_name = "Jump"
 
-[node name="move" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "idle_state", "jump_state")]
+[node name="move" type="Node" parent="movements" node_paths=PackedStringArray("fall_state", "idle_state", "jump_state")]
 script = ExtResource("7_xbqrr")
 fall_state = NodePath("../fall")
 idle_state = NodePath("../idle")
 jump_state = NodePath("../jump")
 animation_name = "Move"
+
+[node name="attacks" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_fbdr2")]
+starting_state = NodePath("sheath")
+
+[node name="sheath" type="Node" parent="attacks" node_paths=PackedStringArray("fast_state", "hard_state")]
+script = ExtResource("8_hcf8c")
+fast_state = NodePath("../swing")
+hard_state = NodePath("../blast")
+animation_name = "Idle"
+
+[node name="slash" type="Node" parent="attacks" node_paths=PackedStringArray("sheath_state")]
+script = ExtResource("9_eodg7")
+sheath_state = NodePath("../sheath")
+animation_name = "Slash"
+
+[node name="swift" type="Node" parent="attacks" node_paths=PackedStringArray("sheath_state", "next_state")]
+script = ExtResource("9_eodg7")
+sheath_state = NodePath("../sheath")
+next_state = NodePath("../swing")
+animation_name = "Swift"
+
+[node name="swing" type="Node" parent="attacks" node_paths=PackedStringArray("sheath_state", "next_state")]
+script = ExtResource("9_eodg7")
+sheath_state = NodePath("../sheath")
+next_state = NodePath("../swift")
+animation_name = "Swing"
+
+[node name="double" type="Node" parent="attacks" node_paths=PackedStringArray("sheath_state")]
+script = ExtResource("9_eodg7")
+sheath_state = NodePath("../sheath")
+animation_name = "Double"
+
+[node name="blast" type="Node" parent="attacks" node_paths=PackedStringArray("sheath_state")]
+script = ExtResource("9_eodg7")
+sheath_state = NodePath("../sheath")
+animation_name = "Blast"
+
+[connection signal="animation_finished" from="animations" to="attacks/slash" method="_on_animations_animation_finished"]
