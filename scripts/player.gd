@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Player
+#class_name Player
 
 @onready var _me = $four
 var _steps = []
