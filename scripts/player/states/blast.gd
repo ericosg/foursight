@@ -1,5 +1,13 @@
 extends Attack
 
+@onready var collision = $"../../area/hard"
+
+func enter() -> void:
+	super()
+	collision.position.x = -37 if parent.animations.flip_h else 50 # Hack to flip collider
+	collision.disabled = false # Collision detects for hard attacks
+
 func exit() -> void:
-	parent.position.x += -64 if parent.animations.flip_h else 64 # Sprite movement approx 64px
-	destroy_enemies() # TODO: Blast still has an issue killing enemies
+	destroy_enemies()
+	collision.disabled = true
+	parent.position.x += -68 if parent.animations.flip_h else 68 # Sprite movement approx 68px

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c107505xfsdgm"]
+[gd_scene load_steps=14 format=3 uid="uid://c107505xfsdgm"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_o83fc"]
 [ext_resource type="PackedScene" uid="uid://1h4t0oxphyg6" path="res://assets/sprites/four.aseprite" id="2_xd56n"]
@@ -17,6 +17,9 @@ size = Vector2(13, 23)
 [sub_resource type="CircleShape2D" id="CircleShape2D_xmd1p"]
 radius = 19.105
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uly0v"]
+size = Vector2(100, 26)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_o83fc")
 
@@ -31,9 +34,15 @@ shape = SubResource("RectangleShape2D_nvn2d")
 [node name="area" type="Area2D" parent="."]
 collision_mask = 2
 
-[node name="collision" type="CollisionShape2D" parent="area"]
+[node name="fast" type="CollisionShape2D" parent="area"]
 position = Vector2(6, -11)
 shape = SubResource("CircleShape2D_xmd1p")
+
+[node name="hard" type="CollisionShape2D" parent="area"]
+position = Vector2(50, -13)
+shape = SubResource("RectangleShape2D_uly0v")
+disabled = true
+debug_color = Color(0.92933, 0.265832, 0, 0.42)
 
 [node name="movements" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_fbdr2")]
 starting_state = NodePath("idle")
