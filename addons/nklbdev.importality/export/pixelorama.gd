@@ -222,4 +222,3 @@ class CustomImageFormatLoaderExtension:
 			image.blend_rect(pxo_cel_image, image_rect, Vector2i.ZERO)
 		file.close()
 		return OK
-
