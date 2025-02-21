@@ -2,6 +2,7 @@ extends Node
 
 const _delta = 0.016
 
+const Distance = 20.0 / _delta
 const Speed = 100.0 / _delta
 const JumpVelocity = -JumpForce / _delta
 const JumpForce = 300.0
