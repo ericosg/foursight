@@ -17,13 +17,13 @@ func freeze() -> void:
 func unfreeze() -> void:
 	reactions.change_state($reactions/idle)
 
-
-#func _process(delta: float) -> void:
-	#if Global.Frozen:
-		#modulate = Settings.FrozenColor
-		#animations.speed_scale = Settings.FrozenSpeedScale
-		#animations.play("Frozen")
-	#else:
-		#modulate = Settings.NormalColor
-		#animations.speed_scale = Settings.NormalSpeedScale
-		#animations.play("Idle")
+func start() -> void:
+	reactions.change_state($reactions/startup)
+	
+func _on_animations_animation_finished() -> void:
+	match reactions.current_state.name:
+		"dead":
+			queue_free()
+		"startup":
+			reactions.change_state($reactions/stopped)
+	

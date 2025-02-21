@@ -15,9 +15,10 @@ func _ready() -> void:
 	attacks.init(self)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if can_move:
-		movements.process_input(event)
-	attacks.process_input(event)
+	if not Global.CutScene:
+		if can_move:
+			movements.process_input(event)
+		attacks.process_input(event)
 
 func _physics_process(delta: float) -> void:
 	if can_move:

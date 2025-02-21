@@ -1,3 +1,4 @@
 extends Node
 
-var Frozen = false
+var Frozen := false
+var CutScene := false

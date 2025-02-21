@@ -1,11 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://fydasoc216lp"]
+[gd_scene load_steps=10 format=3 uid="uid://fydasoc216lp"]
 
 [ext_resource type="PackedScene" uid="uid://badd2n03jhbvo" path="res://assets/sprites/enemy1.aseprite" id="1_m6ahv"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_ub2vd"]
 [ext_resource type="PackedScene" uid="uid://bsgtr5x44hma2" path="res://scripts/state_machine/state_machine.tscn" id="3_swu0j"]
 [ext_resource type="Script" path="res://scripts/enemy/states/idle.gd" id="4_jbcts"]
+[ext_resource type="Script" path="res://scripts/enemy/states/attack.gd" id="5_3ky4s"]
 [ext_resource type="Script" path="res://scripts/enemy/states/frozen.gd" id="5_72wkd"]
 [ext_resource type="Script" path="res://scripts/enemy/states/dead.gd" id="5_ev6cb"]
+[ext_resource type="Script" path="res://scripts/enemy/states/startup.gd" id="5_xw41t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m43df"]
 size = Vector2(14, 20)
@@ -15,9 +17,8 @@ script = ExtResource("1_ub2vd")
 
 [node name="animations" parent="." instance=ExtResource("1_m6ahv")]
 position = Vector2(7, -22)
-animation = &"Death"
+animation = &"Frozen"
 autoplay = "Idle"
-frame_progress = 0.146535
 
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(7, -10)
@@ -26,9 +27,22 @@ shape = SubResource("RectangleShape2D_m43df")
 [node name="reactions" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_swu0j")]
 starting_state = NodePath("idle")
 
-[node name="idle" type="Node" parent="reactions"]
+[node name="idle" type="Node" parent="reactions" node_paths=PackedStringArray("attack_state")]
 script = ExtResource("4_jbcts")
+attack_state = NodePath("../attack")
 animation_name = "Idle"
+
+[node name="startup" type="Node" parent="reactions"]
+script = ExtResource("5_xw41t")
+animation_name = "Startup"
+
+[node name="attack" type="Node" parent="reactions"]
+script = ExtResource("5_3ky4s")
+animation_name = "Attack"
+
+[node name="stopped" type="Node" parent="reactions"]
+script = ExtResource("5_3ky4s")
+animation_name = "Stopped"
 
 [node name="frozen" type="Node" parent="reactions"]
 script = ExtResource("5_72wkd")
@@ -38,4 +52,4 @@ animation_name = "Frozen"
 script = ExtResource("5_ev6cb")
 animation_name = "Death"
 
-[connection signal="animation_finished" from="animations" to="reactions/dead" method="_on_animations_animation_finished"]
+[connection signal="animation_finished" from="animations" to="." method="_on_animations_animation_finished"]
