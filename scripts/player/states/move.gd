@@ -12,7 +12,7 @@ func process_input(event: InputEvent) -> State:
 func process_physics(delta: float) -> State:
 	var movement = parent.get_movement()
 	
-	if movement == 0 and parent.position.distance_to(parent.move_position) < 2:
+	if parent.is_on_wall() or movement == 0 and parent.position.distance_to(parent.move_position) < 2:
 		return idle_state
 		
 	if !parent.is_on_floor():

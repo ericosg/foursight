@@ -7,6 +7,7 @@ extends State
 func enter() -> void:
 	super()
 	parent.velocity.x = 0
+	parent.move_position = parent.position # In case there's pending movement that can't be made
 
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed('up') and parent.is_on_floor():
