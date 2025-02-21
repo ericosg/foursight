@@ -3,10 +3,10 @@ extends Node
 
 @export var animation_name: String
 
-var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var parent: PhysicsBody2D
 
 func enter() -> void:
+	print(name)
 	parent.animations.play(animation_name)
 
 func exit() -> void:

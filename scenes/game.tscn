@@ -62,17 +62,18 @@ limit_smoothed = true
 position_smoothing_enabled = true
 editor_draw_limits = true
 
-[node name="Enemy1" parent="." instance=ExtResource("2_6074x")]
+[node name="Enemy" parent="." instance=ExtResource("2_6074x")]
 position = Vector2(37, 0)
 scale = Vector2(-1, 1)
+collision_layer = 3
 
 [node name="Instructions" type="RichTextLabel" parent="."]
 offset_left = -140.0
 offset_top = 24.0
 offset_right = 140.0
 offset_bottom = 71.0
-text = "Space, WASD or Arrow keys to move
-Enter to Start"
+text = "Evil dude:
+We can't let you live."
 scroll_active = false
 shortcut_keys_enabled = false
 structured_text_bidi_override = 5

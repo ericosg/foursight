@@ -47,18 +47,18 @@ debug_color = Color(0.92933, 0.265832, 0, 0.42)
 [node name="movements" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_fbdr2")]
 starting_state = NodePath("idle")
 
-[node name="fall" type="Node" parent="movements" node_paths=PackedStringArray("idle_state", "move_state")]
-script = ExtResource("4_wud64")
-idle_state = NodePath("../idle")
-move_state = NodePath("../move")
-animation_name = "Fall"
-
 [node name="idle" type="Node" parent="movements" node_paths=PackedStringArray("fall_state", "jump_state", "move_state")]
 script = ExtResource("5_rto7l")
 fall_state = NodePath("../fall")
 jump_state = NodePath("../jump")
 move_state = NodePath("../move")
 animation_name = "Idle"
+
+[node name="fall" type="Node" parent="movements" node_paths=PackedStringArray("idle_state", "move_state")]
+script = ExtResource("4_wud64")
+idle_state = NodePath("../idle")
+move_state = NodePath("../move")
+animation_name = "Fall"
 
 [node name="jump" type="Node" parent="movements" node_paths=PackedStringArray("fall_state", "idle_state", "move_state")]
 script = ExtResource("6_gm5qp")

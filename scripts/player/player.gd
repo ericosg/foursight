@@ -18,9 +18,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	attacks.process_input(event)
 
 func _physics_process(delta: float) -> void:
+	print(position)
+	
 	if can_move:
 		movements.process_physics(delta)
 	attacks.process_physics(delta)
+	
+	velocity += get_gravity() * delta
+	move_and_slide()
 
 func _process(delta: float) -> void:
 	if can_move:
