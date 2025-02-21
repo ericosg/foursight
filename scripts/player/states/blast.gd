@@ -4,6 +4,7 @@ extends Attack
 
 func enter() -> void:
 	super()
+	parent.move_position = parent.position # Blast absorbs all current momentum
 	collision.position.x = -37 if parent.animations.flip_h else 50 # Hack to flip collider
 	collision.disabled = false # Collision detects for hard attacks
 
