@@ -11,3 +11,4 @@ func exit() -> void:
 	destroy_enemies()
 	collision.disabled = true
 	parent.position.x += -68 if parent.animations.flip_h else 68 # Sprite movement approx 68px
+	parent.move_position = parent.position # Blast absorbs all current momentum
