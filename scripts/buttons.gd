@@ -24,6 +24,7 @@ func add_button(frame: int):
 	next.frame = frame
 	buttons.position.x -= 16
 	next.position.x = abs(buttons.position.x)
+	next.visible = true
 	add_child(next)
 	if buttons.get_child_count() > BUTTONS_FIT_ON_SCREEN:
 		button.queue_free()

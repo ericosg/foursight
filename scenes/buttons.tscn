@@ -7,5 +7,6 @@
 script = ExtResource("1_sr3si")
 
 [node name="Button" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_onwov")
 hframes = 6
