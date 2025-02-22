@@ -21,6 +21,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		_can_play_steps = true
 		return
 		
+	prepare_movement(event)
+		
 	if Helper.is_handled(event):
 		if Global.Frozen:
 			_steps.push_back(event)
@@ -51,16 +53,17 @@ func _process(delta: float) -> void:
 		movements.process_frame(delta)
 	attacks.process_frame(delta)
 
-func get_movement(event: InputEvent) -> float:
+func prepare_movement(event: InputEvent) -> void:
 	var movement: float = 0
 	if event.is_action("left"):
 		movement = -Settings.Distance
 	elif event.is_action("right"):
 		movement = Settings.Distance
-	return movement
-
-func move(movement: float, delta: float) -> void:
+	
 	if movement != 0:
-		animations.flip_h = movement < 0
 		move_position.x += movement
-	velocity.x = position.direction_to(move_position).x * Settings.Speed * delta
+
+func move(delta: float) -> void:
+	var direction := position.direction_to(move_position).x
+	animations.flip_h = direction < 0
+	velocity.x = direction * Settings.Speed * delta
