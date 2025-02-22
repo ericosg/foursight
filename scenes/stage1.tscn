@@ -148,5 +148,6 @@ transform = Transform2D(1, 0, 0, 1, 480, 380)
 z_index = 1
 position = Vector2(0, 119)
 
+[connection signal="child_order_changed" from="." to="." method="_on_child_order_changed"]
 [connection signal="tree_exited" from="Enemy1" to="." method="_on_enemy_tree_exited"]
 [connection signal="tree_exited" from="Enemy2" to="." method="_on_enemy_tree_exited"]
