@@ -13,6 +13,10 @@ func enter() -> void:
 	next_state = null
 	destroy_enemies()
 
+func exit() -> void:
+	super()
+	parent.play()
+
 func destroy_enemies() -> void:
 	if parent is Player:
 		var area = (parent as Player).area

@@ -35,11 +35,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			$Player/Camera.zoom = Vector2(2 ,2)
 			$Dialog.text = "You:\nI can see all possible futures.\n\nNothing can go wrong..."
 			if get_tree():
-				await get_tree().create_timer(5).timeout
+				await get_tree().create_timer(3).timeout
 			$Dialog.text = "You:\nBut until I kill them all,\nI won't be able to move normally again."
 
 
 func _on_enemy_tree_exited() -> void:
 	if get_tree():
-		await get_tree().create_timer(3).timeout
+		await get_tree().create_timer(5).timeout
 		get_tree().change_scene_to_file("res://scenes/stage1.tscn")
