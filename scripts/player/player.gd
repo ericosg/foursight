@@ -117,5 +117,6 @@ func hit() -> void:
 			movements.change_state($movements/death)
 
 func _on_linked_timeout() -> void:
-	print("LINK FAILED")
-	_steps[_steps.size() - 1].is_linked = false
+	if Global.IsFrozen():
+		print("LINK FAILED")
+		_steps[_steps.size() - 1].is_linked = false
