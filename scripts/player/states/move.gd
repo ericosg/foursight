@@ -7,10 +7,15 @@ extends State
 func enter() -> void:
 	super()
 	parent.pause()
+	
+func exit() -> void:
+	super()
+	parent.play()
 
 func process_input(event: InputEvent) -> State:
 	if event.is_action('up') and parent.is_on_floor():
 		return jump_state
+		
 	return null
 
 func process_physics(delta: float) -> State:

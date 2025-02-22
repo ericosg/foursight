@@ -76,8 +76,6 @@ func move(delta: float) -> void:
 	velocity.x = direction * Settings.Speed * delta
 	
 func stop() -> void:
-	_steps.clear()
-	can_play = false
 	velocity.x = 0
 	move_position = position
 	

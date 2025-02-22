@@ -8,6 +8,10 @@ func enter() -> void:
 	super()
 	parent.pause()
 	parent.velocity.y = -Settings.JumpForce
+	
+func exit() -> void:
+	super()
+	parent.play()
 
 func process_physics(delta: float) -> State:
 	if parent.velocity.y > 0:

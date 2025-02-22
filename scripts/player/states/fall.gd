@@ -5,7 +5,11 @@ extends State
 
 func enter() -> void:
 	super()
-	parent.pause()
+	parent.pause()	
+
+func exit() -> void:
+	super()
+	parent.play()
 
 func process_physics(delta: float) -> State:
 	if parent.is_on_floor():
