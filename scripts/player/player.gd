@@ -70,10 +70,14 @@ func prepare_movement(event: InputEvent) -> void:
 	if movement != 0:
 		move_position.x += movement
 
-func move(delta: float) -> void:
-	var direction := position.direction_to(move_position).x
-	animations.flip_h = direction < 0
-	velocity.x = direction * Settings.Speed * delta
+func move() -> void:
+	var distance := position.x - move_position.x
+	var direction := -1 if distance > 0 else 1
+	if abs(distance) > 1:
+		animations.flip_h = direction < 0
+		velocity.x = direction * Settings.Speed
+	else:
+		velocity.x = 0
 	
 func stop() -> void:
 	velocity.x = 0

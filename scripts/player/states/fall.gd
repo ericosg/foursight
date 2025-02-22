@@ -15,5 +15,5 @@ func process_physics(delta: float) -> State:
 	if parent.is_on_floor():
 		return move_state
 		
-	parent.move(delta)
+	parent.move()
 	return null
