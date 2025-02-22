@@ -11,8 +11,8 @@ extends CharacterBody2D
 var can_move := true
 var can_attack := true
 var move_position: Vector2
+var can_play := false
 var _steps: Array[InputEvent] = []
-var _can_play_steps := false
 
 func _ready() -> void:
 	stop()
@@ -20,18 +20,19 @@ func _ready() -> void:
 	attacks.init(self)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("start"):
-		_can_play_steps = true
-		return
-		
-	prepare_movement(event)
-	if Helper.is_handled(event):
-		_steps.push_back(event)
-		if not Global.CutScene:
-			_can_play_steps = true
+	if not Global.CutScene:
+		if event.is_action_pressed("start"):
+			can_play = true
+			return
+			
+		prepare_movement(event)
+		if Helper.is_handled(event):
+			_steps.push_back(event)
+			if not Global.IsFrozen():
+				can_play = true
 
 func _physics_process(delta: float) -> void:
-	if _can_play_steps:
+	if can_play:
 		if _steps.size() > 0:
 			var event := _steps.pop_front() as InputEvent
 			print('event => ', event.as_text())
@@ -40,7 +41,7 @@ func _physics_process(delta: float) -> void:
 			if can_attack:
 				attacks.process_input(event)
 		else:
-			_can_play_steps = false
+			can_play = false
 	if can_move:
 		movements.process_physics(delta)
 	if can_attack:
@@ -76,8 +77,15 @@ func move(delta: float) -> void:
 	
 func stop() -> void:
 	_steps.clear()
+	can_play = false
 	velocity.x = 0
 	move_position = position
+	
+func play() -> void:
+	can_play = true
+	
+func pause() -> void:
+	can_play = false
 	
 func hit() -> void:
 	can_attack = false

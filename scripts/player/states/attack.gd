@@ -8,9 +8,10 @@ extends State
 var next_state: State
 
 func enter() -> void:
+	super()
+	parent.pause()
 	next_state = null
 	destroy_enemies()
-	super()
 
 func destroy_enemies() -> void:
 	if parent is Player:

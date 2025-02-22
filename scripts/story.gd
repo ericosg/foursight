@@ -12,7 +12,7 @@ func _ready():
 
 func _unhandled_input(event: InputEvent) -> void:
 	if Global.CutScene:
-		if event.is_action_pressed("start") or event.is_action_pressed("up"):
+		if event.is_action_pressed("start"):
 			if len(dialog) > 0:
 				$Dialog.text = str(dialog.pop_front())
 				$Dialog.horizontal_alignment = 2 if $Dialog.horizontal_alignment == 0 else 0

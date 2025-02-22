@@ -4,6 +4,10 @@ extends State
 @export var idle_state: State
 @export var jump_state: State
 
+func enter() -> void:
+	super()
+	parent.pause()
+
 func process_input(event: InputEvent) -> State:
 	if event.is_action('up') and parent.is_on_floor():
 		return jump_state

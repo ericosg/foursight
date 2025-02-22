@@ -6,6 +6,7 @@ extends State
 
 func enter() -> void:
 	super()
+	parent.pause()
 	parent.velocity.y = -Settings.JumpForce
 
 func process_physics(delta: float) -> State:
