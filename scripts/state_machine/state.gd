@@ -6,6 +6,7 @@ extends Node
 var parent: PhysicsBody2D
 
 func enter() -> void:
+	print(parent.name, ' -> ', name)
 	parent.animations.play(animation_name)
 
 func exit() -> void:

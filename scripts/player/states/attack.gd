@@ -33,11 +33,7 @@ func process_frame(delta: float) -> State:
 	if parent.can_move:
 		return next_state if next_state else sheath_state
 	return null
-	
-func process_physics(delta: float) -> State:
-	#if not parent.can_move:
-		#parent.move(0, delta)
-	return null
 
 func _on_animations_animation_finished() -> void:
-	parent.can_move = true
+	if parent.can_attack:
+		parent.can_move = true

@@ -100,7 +100,17 @@ position = Vector2(250, 0)
 rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_ft1xd")
 
+[node name="Enemy1" parent="." instance=ExtResource("4_h6brp")]
+position = Vector2(37, 0)
+scale = Vector2(-1, 1)
+collision_layer = 3
+
+[node name="Enemy2" parent="." instance=ExtResource("4_h6brp")]
+position = Vector2(-154, 0)
+collision_layer = 3
+
 [node name="Player" parent="." instance=ExtResource("3_svc3h")]
+position = Vector2(-67, 0)
 
 [node name="Camera" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
@@ -111,15 +121,6 @@ limit_bottom = 150
 limit_smoothed = true
 position_smoothing_enabled = true
 editor_draw_limits = true
-
-[node name="Enemy1" parent="." instance=ExtResource("4_h6brp")]
-position = Vector2(37, 0)
-scale = Vector2(-1, 1)
-collision_layer = 3
-
-[node name="Enemy2" parent="." instance=ExtResource("4_h6brp")]
-position = Vector2(-154, 0)
-collision_layer = 3
 
 [node name="Instructions" type="Label" parent="."]
 anchors_preset = 5

@@ -20,20 +20,26 @@ func _unhandled_input(event: InputEvent) -> void:
 				Global.CutScene = false
 				$Instructions.queue_free()
 				$Enemy.start()
-				await get_tree().create_timer(0.5).timeout
+				if get_tree():
+					await get_tree().create_timer(0.5).timeout
 				$Player/Camera.offset.x = 32
 				$Player/Camera.zoom = Vector2(4 ,4)
-				await get_tree().create_timer(0.5).timeout
+				if get_tree():
+					await get_tree().create_timer(0.5).timeout
 				$Dialog.text = ""
 	else:
 		if event.is_action_pressed("fast") or event.is_action_pressed("hard"):
-			await get_tree().create_timer(0.5).timeout
+			if get_tree():
+				await get_tree().create_timer(0.5).timeout
 			$Player/Camera.offset.x = 0
 			$Player/Camera.zoom = Vector2(2 ,2)
-			await get_tree().create_timer(0.5).timeout
-			
+			$Dialog.text = "You:\nI can see all possible futures.\n\nNothing can go wrong..."
+			if get_tree():
+				await get_tree().create_timer(5).timeout
+			$Dialog.text = "You:\nBut until I kill them all,\nI won't be able to move normally again."
+
 
 func _on_enemy_tree_exited() -> void:
-	$Dialog.text = "You:\nI can see all possible futures.\n\nNothing can go wrong..."
-	await get_tree().create_timer(3).timeout
-	get_tree().change_scene_to_file("res://scenes/stage1.tscn")
+	if get_tree():
+		await get_tree().create_timer(3).timeout
+		get_tree().change_scene_to_file("res://scenes/stage1.tscn")
