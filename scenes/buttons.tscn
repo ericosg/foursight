@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b486rig7xvlau"]
+[gd_scene load_steps=4 format=3 uid="uid://b486rig7xvlau"]
 
 [ext_resource type="Texture2D" uid="uid://dqknuo800bkar" path="res://assets/sprites/buttons.aseprite" id="1_onwov"]
 [ext_resource type="Script" path="res://scripts/buttons.gd" id="1_sr3si"]
+[ext_resource type="PackedScene" uid="uid://dlkcvjkn8whkc" path="res://assets/sprites/timer.aseprite" id="3_wrp0f"]
 
 [node name="Buttons" type="Node2D"]
 script = ExtResource("1_sr3si")
@@ -10,3 +11,9 @@ script = ExtResource("1_sr3si")
 visible = false
 texture = ExtResource("1_onwov")
 hframes = 7
+
+[node name="Timer" parent="." instance=ExtResource("3_wrp0f")]
+visible = false
+position = Vector2(0, -16)
+scale = Vector2(0.25, 0.25)
+autoplay = "Run"

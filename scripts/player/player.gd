@@ -12,7 +12,16 @@ var can_move := true
 var can_attack := true
 var move_position: Vector2
 var can_play := false
-var _steps: Array[InputEvent] = []
+
+class LinkedEvent:
+	var event: InputEvent
+	var is_linked: bool = false
+	
+	func _init(event: InputEvent, is_linked: bool = false):
+		self.event = event
+		self.is_linked = is_linked
+
+var _steps: Array[LinkedEvent] = []
 
 func _ready() -> void:
 	stop()
@@ -26,20 +35,21 @@ func _unhandled_input(event: InputEvent) -> void:
 			return
 
 		if Helper.is_handled(event):
-			_steps.push_back(event)
+			_steps.push_back(LinkedEvent.new(event))
 			if not Global.IsFrozen():
 				can_play = true
 
 func _physics_process(delta: float) -> void:
 	if can_play:
 		if _steps.size() > 0:
-			var event := _steps.pop_front() as InputEvent
-			prepare_movement(event)
-			print('event => ', event.as_text())
+			var linkedEvent := _steps.pop_front() as LinkedEvent
+			prepare_movement(linkedEvent.event)
+			print('event => ', linkedEvent.event.as_text())
 			if can_move:
-				movements.process_input(event)
+				movements.process_input(linkedEvent.event)
 			if can_attack:
-				attacks.process_input(event)
+				attacks.process_input(linkedEvent.event)
+			can_play = linkedEvent.is_linked
 		else:
 			can_play = false
 	velocity += get_gravity() * delta

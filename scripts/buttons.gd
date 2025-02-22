@@ -29,11 +29,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 func add_button(frame: int):
 	var button := get_child(0)
-	var next := button.duplicate()
-	next.frame = frame
+	var next_button := button.duplicate()
+	var timer := get_child(1)
+	var next_timer := timer.duplicate()
+	next_button.frame = frame
+	next_timer.frame = 0
 	position.x -= 16
-	next.position.x = abs(position.x)
-	next.visible = true
-	add_child(next)
+	next_button.position.x = abs(position.x)
+	next_button.visible = true
+	next_timer.position.x = abs(position.x)
+	next_timer.visible = true
+	add_child(next_button)
+	add_child(next_timer)
 	if get_child_count() > BUTTONS_FIT_ON_SCREEN:
 		button.queue_free()
+		next_timer.queue_free()
