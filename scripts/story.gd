@@ -7,7 +7,7 @@ var dialog: Array[String] = [
 ]
 
 func _ready():
-	Global.Frozen = false
+	Global.Freeze(false)
 	Global.CutScene = true
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -24,12 +24,10 @@ func _unhandled_input(event: InputEvent) -> void:
 				$Player/Camera.offset.x = 32
 				$Player/Camera.zoom = Vector2(4 ,4)
 				await get_tree().create_timer(0.5).timeout
-				Engine.time_scale = 0.2
 				$Dialog.text = ""
 	else:
 		if event.is_action_pressed("fast") or event.is_action_pressed("hard"):
 			await get_tree().create_timer(0.5).timeout
-			Engine.time_scale = 1
 			$Player/Camera.offset.x = 0
 			$Player/Camera.zoom = Vector2(2 ,2)
 			await get_tree().create_timer(0.5).timeout

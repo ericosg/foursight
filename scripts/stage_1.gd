@@ -1,5 +1,5 @@
 extends Node2D
 
 func _ready():
-	Global.Frozen = true
+	Global.Freeze()
 	Global.CutScene = false

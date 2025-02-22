@@ -6,16 +6,21 @@ extends AnimatableBody2D
 @onready var collision := $collision
 
 func _ready() -> void:
+	Global.connect("FrozenChanged", freeze)
 	reactions.init(self)
+	
+func freeze() -> void:
+	if Global.IsFrozen():
+		modulate = Settings.FrozenColor
+		animations.speed_scale = Settings.FrozenSpeedScale
+		reactions.change_state($reactions/frozen)
+	else:
+		modulate = Settings.NormalColor
+		animations.speed_scale = Settings.NormalSpeedScale
+		reactions.change_state($reactions/idle)
 	
 func die() -> void:
 	reactions.change_state($reactions/dead)
-
-func freeze() -> void:
-	reactions.change_state($reactions/frozen)
-
-func unfreeze() -> void:
-	reactions.change_state($reactions/idle)
 
 func start() -> void:
 	reactions.change_state($reactions/startup)
@@ -25,5 +30,8 @@ func _on_animations_animation_finished() -> void:
 		"dead":
 			queue_free()
 		"startup":
+			animations.speed_scale = Settings.FrozenSpeedScale
 			reactions.change_state($reactions/stopped)
+		"stopped":
+			modulate = Settings.FrozenColor
 	

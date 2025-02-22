@@ -24,7 +24,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	prepare_movement(event)
 		
 	if Helper.is_handled(event):
-		if Global.Frozen:
+		if Global.IsFrozen():
 			_steps.push_back(event)
 		elif not Global.CutScene:
 			if can_move:
