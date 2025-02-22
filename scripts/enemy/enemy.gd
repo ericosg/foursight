@@ -27,14 +27,7 @@ func start() -> void:
 	reactions.change_state($reactions/startup)
 	
 func _on_animations_animation_finished() -> void:
-	match reactions.current_state.name:
-		"dead":
-			queue_free()
-		"startup":
-			animations.speed_scale = Settings.FrozenSpeedScale
-			reactions.change_state($reactions/stopped)
-		"stopped":
-			modulate = Settings.FrozenColor
+	reactions.animation_finished()
 	
 func _on_hit_body_entered(body: Node2D) -> void:
 	if body is Player and not Global.CutScene:

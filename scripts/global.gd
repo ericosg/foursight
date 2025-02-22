@@ -16,4 +16,5 @@ func IsFrozen() -> bool:
 func Die() -> void:
 	Died.emit()
 	if get_tree():
+		await get_tree().create_timer(0.2).timeout
 		get_tree().reload_current_scene() 

@@ -29,3 +29,7 @@ func process_input(event: InputEvent) -> void:
 func process_frame(delta: float) -> void:
 	var new_state = current_state.process_frame(delta)
 	change_state(new_state)
+
+func animation_finished() -> void:
+	var new_state = current_state.animation_finished()
+	change_state(new_state)

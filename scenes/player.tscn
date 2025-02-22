@@ -123,4 +123,4 @@ script = ExtResource("10_rdvs8")
 sheath_state = NodePath("../sheath")
 animation_name = "Blast"
 
-[connection signal="animation_finished" from="animations" to="attacks/slash" method="_on_animations_animation_finished"]
+[connection signal="animation_finished" from="animations" to="." method="_on_animations_animation_finished"]

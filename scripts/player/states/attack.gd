@@ -9,7 +9,6 @@ var next_state: State
 
 func enter() -> void:
 	next_state = null
-	parent.can_move = false
 	destroy_enemies()
 	super()
 
@@ -29,11 +28,5 @@ func process_input(event: InputEvent) -> State:
 		next_state = hard_state
 	return null
 
-func process_frame(delta: float) -> State:
-	if parent.can_move:
-		return next_state if next_state else sheath_state
-	return null
-
-func _on_animations_animation_finished() -> void:
-	if parent.can_attack:
-		parent.can_move = true
+func animation_finished() -> State:
+	return next_state if next_state else sheath_state

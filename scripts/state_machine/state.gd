@@ -20,3 +20,6 @@ func process_frame(delta: float) -> State:
 
 func process_physics(delta: float) -> State:
 	return null
+	
+func animation_finished() -> State:
+	return null
