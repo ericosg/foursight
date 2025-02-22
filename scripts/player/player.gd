@@ -24,8 +24,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.is_action_pressed("start"):
 			can_play = true
 			return
-			
-		prepare_movement(event)
+
 		if Helper.is_handled(event):
 			_steps.push_back(event)
 			if not Global.IsFrozen():
@@ -35,6 +34,7 @@ func _physics_process(delta: float) -> void:
 	if can_play:
 		if _steps.size() > 0:
 			var event := _steps.pop_front() as InputEvent
+			prepare_movement(event)
 			print('event => ', event.as_text())
 			if can_move:
 				movements.process_input(event)

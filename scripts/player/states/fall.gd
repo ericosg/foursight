@@ -12,8 +12,8 @@ func exit() -> void:
 	parent.play()
 
 func process_physics(delta: float) -> State:
+	parent.move()
 	if parent.is_on_floor():
 		return move_state
 		
-	parent.move()
 	return null
