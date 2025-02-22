@@ -8,6 +8,8 @@ extends CharacterBody2D
 
 var can_move := true
 var move_position: Vector2
+var _steps: Array[InputEvent] = []
+var _can_play_steps := false
 
 func _ready() -> void:
 	move_position = position
@@ -15,12 +17,28 @@ func _ready() -> void:
 	attacks.init(self)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not Global.CutScene:
-		if can_move:
-			movements.process_input(event)
-		attacks.process_input(event)
+	if event.is_action_pressed("start"):
+		_can_play_steps = true
+		return
+		
+	if Helper.is_handled(event):
+		if Global.Frozen:
+			_steps.push_back(event)
+		elif not Global.CutScene:
+			if can_move:
+				movements.process_input(event)
+			attacks.process_input(event)
 
 func _physics_process(delta: float) -> void:
+	if _can_play_steps:
+		if _steps.size() > 0:
+			var event := _steps.pop_front() as InputEvent
+			if can_move:
+				movements.process_input(event)
+			attacks.process_input(event)
+		else:
+			_can_play_steps = false
+		
 	if can_move:
 		movements.process_physics(delta)
 	attacks.process_physics(delta)
@@ -33,11 +51,11 @@ func _process(delta: float) -> void:
 		movements.process_frame(delta)
 	attacks.process_frame(delta)
 
-func get_movement() -> float:
+func get_movement(event: InputEvent) -> float:
 	var movement: float = 0
-	if Input.is_action_just_pressed("left"):
+	if event.is_action("left"):
 		movement = -Settings.Distance
-	elif Input.is_action_just_pressed("right"):
+	elif event.is_action("right"):
 		movement = Settings.Distance
 	return movement
 

@@ -10,9 +10,9 @@ func enter() -> void:
 	parent.move_position = parent.position # In case there's pending movement that can't be made
 
 func process_input(event: InputEvent) -> State:
-	if Input.is_action_just_pressed('up') and parent.is_on_floor():
+	if event.is_action('up') and parent.is_on_floor():
 		return jump_state
-	if Input.get_axis('left', 'right'):
+	if event.is_action("left") or event.is_action("right"):
 		return move_state
 	return null
 

@@ -6,17 +6,17 @@ const BUTTONS_FIT_ON_SCREEN = 31
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if not Global.CutScene:
-		if Input.is_action_just_pressed('up'):
+		if event.is_action_just_pressed('up'):
 			add_button(0)
-		if Input.is_action_just_pressed('right'):
+		if event.is_action_just_pressed('right'):
 			add_button(1)
-		if Input.is_action_just_pressed('down'):
+		if event.is_action_just_pressed('down'):
 			add_button(2)
-		if Input.is_action_just_pressed('left'):
+		if event.is_action_just_pressed('left'):
 			add_button(3)
-		if Input.is_action_just_pressed('fast'):
+		if event.is_action_just_pressed('fast'):
 			add_button(4)
-		if Input.is_action_just_pressed('hard'):
+		if event.is_action_just_pressed('hard'):
 			add_button(5)
 		
 func add_button(frame: int):

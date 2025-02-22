@@ -12,7 +12,7 @@ func _ready():
 
 func _unhandled_input(event: InputEvent) -> void:
 	if Global.CutScene:
-		if Input.is_action_just_pressed("start") or Input.is_action_just_pressed("up"):
+		if event.is_action_just_pressed("start") or event.is_action_just_pressed("up"):
 			if len(dialog) > 0:
 				$Dialog.text = str(dialog.pop_front())
 				$Dialog.horizontal_alignment = 2 if $Dialog.horizontal_alignment == 0 else 0
@@ -28,7 +28,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				Global.Frozen = true
 				$Dialog.text = ""
 	else:
-		if Input.is_action_just_pressed("fast") or Input.is_action_just_pressed("hard"):
+		if event.is_action_just_pressed("fast") or event.is_action_just_pressed("hard"):
 			await get_tree().create_timer(0.5).timeout
 			Engine.time_scale = 1
 			$Player/Camera.offset.x = 0

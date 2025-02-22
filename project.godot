@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 Global="*res://scripts/global.gd"
 Settings="*res://scripts/settings.gd"
+Helper="*res://scripts/helper.gd"
 
 [display]
 

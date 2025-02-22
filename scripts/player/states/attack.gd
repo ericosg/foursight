@@ -23,9 +23,9 @@ func destroy_enemies() -> void:
 					(body as Enemy).die()
 
 func process_input(event: InputEvent) -> State:
-	if fast_state && Input.is_action_just_pressed('fast'):
+	if fast_state && event.is_action('fast'):
 		next_state = fast_state
-	if hard_state && Input.is_action_just_pressed('hard'):
+	if hard_state && event.is_action('hard'):
 		next_state = hard_state
 	return null
 
