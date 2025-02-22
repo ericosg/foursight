@@ -5,7 +5,7 @@ extends State
 
 func enter() -> void:
 	super()
-	parent.pause()	
+	parent.pause()
 
 func exit() -> void:
 	super()

@@ -42,12 +42,12 @@ func _physics_process(delta: float) -> void:
 				attacks.process_input(event)
 		else:
 			can_play = false
+	velocity += get_gravity() * delta
+	move_and_slide()
 	if can_move:
 		movements.process_physics(delta)
 	if can_attack:
 		attacks.process_physics(delta)
-	velocity += get_gravity() * delta
-	move_and_slide()
 
 func _process(delta: float) -> void:
 	if can_move:
