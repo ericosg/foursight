@@ -123,4 +123,9 @@ script = ExtResource("10_rdvs8")
 sheath_state = NodePath("../sheath")
 animation_name = "Blast"
 
+[node name="linked" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
 [connection signal="animation_finished" from="animations" to="." method="_on_animations_animation_finished"]
+[connection signal="timeout" from="linked" to="." method="_on_linked_timeout"]

@@ -15,9 +15,9 @@ var can_play := false
 
 class LinkedEvent:
 	var event: InputEvent
-	var is_linked: bool = false
+	var is_linked: bool = true
 	
-	func _init(event: InputEvent, is_linked: bool = false):
+	func _init(event: InputEvent, is_linked: bool = true):
 		self.event = event
 		self.is_linked = is_linked
 
@@ -31,10 +31,12 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if not Global.CutScene:
 		if event.is_action_pressed("start"):
+			$linked.stop()
 			can_play = true
 			return
 
 		if Helper.is_handled(event):
+			$linked.start(0.8)
 			_steps.push_back(LinkedEvent.new(event))
 			if not Global.IsFrozen():
 				can_play = true
@@ -113,3 +115,7 @@ func hit() -> void:
 		if get_tree():
 			await get_tree().create_timer(0.5).timeout
 			movements.change_state($movements/death)
+
+func _on_linked_timeout() -> void:
+	print("LINK FAILED")
+	_steps[_steps.size() - 1].is_linked = false
