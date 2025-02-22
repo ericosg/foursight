@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c107505xfsdgm"]
+[gd_scene load_steps=16 format=3 uid="uid://c107505xfsdgm"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_o83fc"]
 [ext_resource type="PackedScene" uid="uid://1h4t0oxphyg6" path="res://assets/sprites/four.aseprite" id="2_xd56n"]
@@ -8,7 +8,9 @@
 [ext_resource type="Script" path="res://scripts/player/states/jump.gd" id="6_gm5qp"]
 [ext_resource type="Script" path="res://scripts/player/states/move.gd" id="7_xbqrr"]
 [ext_resource type="Script" path="res://scripts/player/states/sheath.gd" id="8_hcf8c"]
+[ext_resource type="Script" path="res://scripts/player/states/hit.gd" id="8_hhdsq"]
 [ext_resource type="Script" path="res://scripts/player/states/attack.gd" id="9_eodg7"]
+[ext_resource type="Script" path="res://scripts/player/states/death.gd" id="9_f7hp5"]
 [ext_resource type="Script" path="res://scripts/player/states/blast.gd" id="10_rdvs8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvn2d"]
@@ -73,6 +75,14 @@ fall_state = NodePath("../fall")
 idle_state = NodePath("../idle")
 jump_state = NodePath("../jump")
 animation_name = "Move"
+
+[node name="hit" type="Node" parent="movements"]
+script = ExtResource("8_hhdsq")
+animation_name = "Hit"
+
+[node name="death" type="Node" parent="movements"]
+script = ExtResource("9_f7hp5")
+animation_name = "Death"
 
 [node name="attacks" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_fbdr2")]
 starting_state = NodePath("sheath")

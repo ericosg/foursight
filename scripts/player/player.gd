@@ -85,7 +85,7 @@ func hit() -> void:
 	HP -= 1
 	if get_tree():
 		await get_tree().create_timer(0.5).timeout
-		animations.play("Hit")
+		movements.change_state($movements/hit)
 		can_attack = true
 		
 	if HP <= 0:
@@ -94,7 +94,4 @@ func hit() -> void:
 		can_attack = false
 		if get_tree():
 			await get_tree().create_timer(0.5).timeout
-			animations.play("Death")
-		if get_tree():
-			await get_tree().create_timer(1.5).timeout
-			Global.Die()
+			movements.change_state($movements/death)
