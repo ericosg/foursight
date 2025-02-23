@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 @export var HP := 1
+@export var Tutorial := false
 
 @onready var animations: AnimatedSprite2D = $animations
 @onready var area: Area2D = $area
@@ -26,24 +27,28 @@ func _ready() -> void:
 	stop()
 	movements.init(self)
 	attacks.init(self)
+	
+func has_steps() -> bool:
+	return _steps.size() > 0
 
 func _unhandled_input(event: InputEvent) -> void:
 	# TODO: After "start" no input should be accepted until the stack ends
 	if not Global.CutScene:
-		if event.is_action_pressed("start"):
+		if event.is_action_pressed("start") and has_steps():
 			$linked.stop()
+			Global.Freeze(false)
 			can_play = true
 			return
 
-		if Helper.is_handled(event):
+		if Global.IsFrozen() and Helper.is_handled(event):
 			$linked.start(0.8)
 			_steps.push_back(LinkedEvent.new(event))
-			if not Global.IsFrozen():
+			if Tutorial:
 				can_play = true
 
 func _physics_process(delta: float) -> void:
 	if can_play:
-		if _steps.size() > 0:
+		if has_steps():
 			var linkedEvent := _steps.pop_front() as LinkedEvent
 			prepare_movement(linkedEvent.event)
 			print('event => ', linkedEvent.event.as_text())

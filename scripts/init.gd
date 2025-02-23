@@ -1,7 +1,6 @@
 extends Node2D
 
 func _ready():
-	Global.Freeze(false)
 	Global.CutScene = false
 
 func _on_enemy_tree_exited() -> void:

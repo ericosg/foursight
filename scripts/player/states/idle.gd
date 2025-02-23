@@ -8,6 +8,8 @@ func enter() -> void:
 	if parent.can_show_movements:
 		super()
 	parent.stop()
+	if not parent.has_steps():
+		Global.Freeze()
 
 func process_input(event: InputEvent) -> State:
 	if event.is_action('up') and parent.is_on_floor():

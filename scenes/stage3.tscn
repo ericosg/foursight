@@ -743,19 +743,19 @@ rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_ft1xd")
 
 [node name="Enemy1" parent="." instance=ExtResource("3_4qmqu")]
-position = Vector2(78, 32)
-scale = Vector2(-1, 1)
+position = Vector2(189, 62)
 collision_layer = 3
+auto_move = true
 
 [node name="Enemy2" parent="." instance=ExtResource("3_4qmqu")]
-position = Vector2(-113, 16)
+position = Vector2(-213, 32)
 collision_layer = 3
+auto_move = true
 
 [node name="Enemy3" parent="." instance=ExtResource("3_4qmqu")]
-position = Vector2(175, -32)
-rotation = 3.14159
-scale = Vector2(1, -1)
+position = Vector2(252, -40)
 collision_layer = 3
+auto_move = true
 
 [node name="Player" parent="." instance=ExtResource("4_diks1")]
 modulate = Color(0.992157, 0.792157, 0.466667, 1)
@@ -766,7 +766,7 @@ metadata/_edit_lock_ = true
 zoom = Vector2(2, 2)
 limit_left = -250
 limit_top = -150
-limit_right = 250
+limit_right = 270
 limit_bottom = 150
 limit_smoothed = true
 position_smoothing_enabled = true

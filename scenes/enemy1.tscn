@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://fydasoc216lp"]
+[gd_scene load_steps=14 format=3 uid="uid://fydasoc216lp"]
 
 [ext_resource type="PackedScene" uid="uid://badd2n03jhbvo" path="res://assets/sprites/enemy1.aseprite" id="1_m6ahv"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_ub2vd"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/enemy/states/startup.gd" id="5_xw41t"]
 [ext_resource type="Script" path="res://scripts/enemy/states/react.gd" id="6_eedeb"]
 [ext_resource type="Script" path="res://scripts/enemy/states/stopped.gd" id="7_g018j"]
+[ext_resource type="Script" path="res://scripts/enemy/states/move.gd" id="11_k7wua"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m43df"]
 size = Vector2(14, 20)
@@ -17,7 +18,7 @@ size = Vector2(14, 20)
 [sub_resource type="CircleShape2D" id="CircleShape2D_sv62q"]
 radius = 21.095
 
-[node name="Enemy" type="AnimatableBody2D"]
+[node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_ub2vd")
 
 [node name="animations" parent="." instance=ExtResource("1_m6ahv")]
@@ -32,8 +33,10 @@ shape = SubResource("RectangleShape2D_m43df")
 [node name="reactions" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_swu0j")]
 starting_state = NodePath("idle")
 
-[node name="idle" type="Node" parent="reactions"]
+[node name="idle" type="Node" parent="reactions" node_paths=PackedStringArray("frozen_state", "move_state")]
 script = ExtResource("4_jbcts")
+frozen_state = NodePath("../frozen")
+move_state = NodePath("../move")
 animation_name = "Idle"
 
 [node name="startup" type="Node" parent="reactions" node_paths=PackedStringArray("stopped_state")]
@@ -54,13 +57,21 @@ animation_name = "Attack"
 script = ExtResource("7_g018j")
 animation_name = "Stopped"
 
-[node name="frozen" type="Node" parent="reactions"]
+[node name="frozen" type="Node" parent="reactions" node_paths=PackedStringArray("idle_state", "move_state")]
 script = ExtResource("5_72wkd")
+idle_state = NodePath("../idle")
+move_state = NodePath("../move")
 animation_name = "Frozen"
 
 [node name="dead" type="Node" parent="reactions"]
 script = ExtResource("5_ev6cb")
 animation_name = "Death"
+
+[node name="move" type="Node" parent="reactions" node_paths=PackedStringArray("frozen_state", "idle_state")]
+script = ExtResource("11_k7wua")
+frozen_state = NodePath("../frozen")
+idle_state = NodePath("../idle")
+animation_name = "Walk"
 
 [node name="area" type="Area2D" parent="."]
 

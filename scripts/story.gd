@@ -9,7 +9,6 @@ var dialog: Array[String] = [
 var played := false
 
 func _ready():
-	Global.Freeze(false)
 	Global.CutScene = true
 
 func _unhandled_input(event: InputEvent) -> void:

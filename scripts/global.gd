@@ -10,7 +10,7 @@ signal Died
 signal FrozenChanged
 
 func Freeze(status: bool = true) -> void:
-	print('Starting ', 'frozen' if status else 'unfrozen')
+	print('Freezing' if status else 'Unfreezing')
 	_frozen = status
 	FrozenChanged.emit()
 
