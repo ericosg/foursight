@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=4 uid="uid://bfjpt35xwnmrr"]
 
-[ext_resource type="Script" path="res://scripts/stage_1.gd" id="1_0x7am"]
+[ext_resource type="Script" path="res://scripts/stage1.gd" id="1_0x7am"]
 [ext_resource type="Texture2D" uid="uid://yj8u1au7ufro" path="res://assets/sprites/world.aseprite" id="2_05q8i"]
 [ext_resource type="PackedScene" uid="uid://c107505xfsdgm" path="res://scenes/player.tscn" id="3_svc3h"]
 [ext_resource type="PackedScene" uid="uid://chnbokp0cimb0" path="res://scenes/killzone.tscn" id="3_svmth"]
-[ext_resource type="PackedScene" uid="uid://fydasoc216lp" path="res://scenes/enemy.tscn" id="4_h6brp"]
+[ext_resource type="PackedScene" uid="uid://fydasoc216lp" path="res://scenes/enemy1.tscn" id="4_h6brp"]
 [ext_resource type="PackedScene" uid="uid://b486rig7xvlau" path="res://scenes/buttons.tscn" id="5_r7mao"]
 [ext_resource type="PackedScene" uid="uid://44x85e66et0g" path="res://scenes/hud.tscn" id="7_xoob7"]
 

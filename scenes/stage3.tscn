@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=4 uid="uid://dp0hc8tsocu4w"]
 
-[ext_resource type="Script" path="res://scripts/stage_3.gd" id="1_ojmk3"]
+[ext_resource type="Script" path="res://scripts/stage3.gd" id="1_ojmk3"]
 [ext_resource type="Texture2D" uid="uid://b2e3s01q01cjn" path="res://assets/graphics/backgrounds/2.png" id="2_u706q"]
-[ext_resource type="PackedScene" uid="uid://fydasoc216lp" path="res://scenes/enemy.tscn" id="3_4qmqu"]
+[ext_resource type="PackedScene" uid="uid://fydasoc216lp" path="res://scenes/enemy1.tscn" id="3_4qmqu"]
 [ext_resource type="PackedScene" uid="uid://c107505xfsdgm" path="res://scenes/player.tscn" id="4_diks1"]
 [ext_resource type="PackedScene" uid="uid://b486rig7xvlau" path="res://scenes/buttons.tscn" id="5_s8qov"]
 [ext_resource type="PackedScene" uid="uid://44x85e66et0g" path="res://scenes/hud.tscn" id="6_tniye"]
@@ -796,7 +796,7 @@ transform = Transform2D(1, 0, 0, 1, 480, 380)
 
 [node name="Buttons" parent="UI" instance=ExtResource("5_s8qov")]
 z_index = 1
-position = Vector2(0, 119)
+position = Vector2(0, -300)
 metadata/_edit_lock_ = true
 
 [node name="HUD" parent="UI" instance=ExtResource("6_tniye")]
