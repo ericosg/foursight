@@ -9,6 +9,7 @@ var dialog: Array[String] = [
 var played := false
 
 func _ready():
+	Global.Tutorial = true
 	Global.CutScene = true
 
 func _unhandled_input(event: InputEvent) -> void:

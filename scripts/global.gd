@@ -1,5 +1,6 @@
 extends Node
 
+var Tutorial := true
 var CutScene := false
 var _frozen := false
 var Seconds := 0.0

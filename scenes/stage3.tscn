@@ -759,13 +759,13 @@ auto_move = true
 
 [node name="Player" parent="." instance=ExtResource("4_diks1")]
 modulate = Color(0.992157, 0.792157, 0.466667, 1)
-position = Vector2(-42, 32)
-metadata/_edit_lock_ = true
+position = Vector2(26, 141)
+HP = 1
 
 [node name="Camera" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
 limit_left = -250
-limit_top = -150
+limit_top = -120
 limit_right = 270
 limit_bottom = 150
 limit_smoothed = true

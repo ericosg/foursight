@@ -2,7 +2,6 @@ class_name Player
 extends CharacterBody2D
 
 @export var HP := 1
-@export var Tutorial := false
 
 @onready var animations: AnimatedSprite2D = $animations
 @onready var area: Area2D = $area
@@ -43,7 +42,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if Global.IsFrozen() and Helper.is_handled(event):
 			$linked.start(0.8)
 			_steps.push_back(LinkedEvent.new(event))
-			if Tutorial:
+			if Global.Tutorial:
 				can_play = true
 
 func _physics_process(delta: float) -> void:

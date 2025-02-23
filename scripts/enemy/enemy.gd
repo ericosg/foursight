@@ -27,7 +27,7 @@ func _on_animations_animation_finished() -> void:
 	
 func _on_hit_body_entered(body: Node2D) -> void:
 	if body is Player and not Global.CutScene:
-		if auto_move:
+		if auto_move or Global.Tutorial:
 			reactions.change_state($reactions/attack)
 		else:
 			reactions.change_state($reactions/react)
