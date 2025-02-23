@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://bxyb1reymbbbt"]
+[gd_scene load_steps=10 format=4 uid="uid://bxyb1reymbbbt"]
 
 [ext_resource type="Script" path="res://scripts/stage_1.gd" id="1_oc056"]
 [ext_resource type="Texture2D" uid="uid://cr6ir5b6jfgk0" path="res://assets/graphics/backgrounds/1.png" id="2_5x5vb"]
 [ext_resource type="PackedScene" uid="uid://fydasoc216lp" path="res://scenes/enemy.tscn" id="4_y4186"]
 [ext_resource type="PackedScene" uid="uid://c107505xfsdgm" path="res://scenes/player.tscn" id="5_23fq3"]
 [ext_resource type="PackedScene" uid="uid://b486rig7xvlau" path="res://scenes/buttons.tscn" id="6_73rvf"]
+[ext_resource type="PackedScene" uid="uid://44x85e66et0g" path="res://scenes/hud.tscn" id="6_qjfgb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_57rmc"]
 texture = ExtResource("2_5x5vb")
@@ -762,6 +763,9 @@ transform = Transform2D(1, 0, 0, 1, 480, 380)
 [node name="Buttons" parent="UI" instance=ExtResource("6_73rvf")]
 z_index = 1
 position = Vector2(0, 119)
+
+[node name="HUD" parent="UI" instance=ExtResource("6_qjfgb")]
+position = Vector2(-480, -380)
 
 [connection signal="tree_exited" from="Enemy1" to="." method="_on_enemy_tree_exited"]
 [connection signal="tree_exited" from="Enemy2" to="." method="_on_enemy_tree_exited"]

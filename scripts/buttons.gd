@@ -29,9 +29,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 func add_button(frame: int, is_linked: bool = true):
 	if is_linked:
+		Global.Moves += 1
 		var linked_timer = $Timers.get_children()[$Timers.get_child_count() - 1] as AnimatedSprite2D
 		if linked_timer.frame != 8:
 			linked_timer.stop()
+	else:
+		Global.Starts += 1
 	var button := $Buttons.get_child(0)
 	var next_button := button.duplicate()
 	var timer := $Timers.get_child(0)

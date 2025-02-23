@@ -10,11 +10,13 @@ var next_state: State
 func enter() -> void:
 	super()
 	parent.pause()
+	parent.can_show_movements = false
 	next_state = null
 	destroy_enemies()
 
 func exit() -> void:
 	super()
+	parent.can_show_movements = true
 	parent.play()
 
 func destroy_enemies() -> void:

@@ -5,6 +5,7 @@ extends State
 
 func enter() -> void:
 	super()
+	parent.can_show_movements = true
 
 func process_input(event: InputEvent) -> State:
 	if event.is_action('fast'):

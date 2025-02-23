@@ -5,7 +5,8 @@ extends State
 @export var move_state: State
 
 func enter() -> void:
-	super()
+	if parent.can_show_movements:
+		super()
 	parent.stop()
 
 func process_input(event: InputEvent) -> State:

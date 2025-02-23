@@ -2,6 +2,9 @@ extends Node
 
 var CutScene := false
 var _frozen := false
+var Seconds := 0.0
+var Starts := 0
+var Moves := 0
 
 signal Died
 signal FrozenChanged

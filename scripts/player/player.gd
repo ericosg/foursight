@@ -8,8 +8,7 @@ extends CharacterBody2D
 @onready var movements = $movements
 @onready var attacks = $attacks
 
-var can_move := true
-var can_attack := true
+var can_show_movements := true
 var move_position: Vector2
 var can_play := false
 
@@ -47,31 +46,23 @@ func _physics_process(delta: float) -> void:
 			var linkedEvent := _steps.pop_front() as LinkedEvent
 			prepare_movement(linkedEvent.event)
 			print('event => ', linkedEvent.event.as_text())
-			if can_move:
-				movements.process_input(linkedEvent.event)
-			if can_attack:
-				attacks.process_input(linkedEvent.event)
+			movements.process_input(linkedEvent.event)
+			attacks.process_input(linkedEvent.event)
 			can_play = linkedEvent.is_linked
 		else:
 			can_play = false
 	velocity += get_gravity() * delta
 	move_and_slide()
-	if can_move:
-		movements.process_physics(delta)
-	if can_attack:
-		attacks.process_physics(delta)
+	movements.process_physics(delta)
+	attacks.process_physics(delta)
 
 func _process(delta: float) -> void:
-	if can_move:
-		movements.process_frame(delta)
-	if can_attack:
-		attacks.process_frame(delta)
+	movements.process_frame(delta)
+	attacks.process_frame(delta)
 		
 func _on_animations_animation_finished() -> void:
-	if can_move:
-		movements.animation_finished()
-	if can_attack:
-		attacks.animation_finished()
+	movements.animation_finished()
+	attacks.animation_finished()
 
 func prepare_movement(event: InputEvent) -> void:
 	var movement: float = 0
@@ -102,16 +93,16 @@ func pause() -> void:
 	can_play = false
 	
 func hit() -> void:
-	can_attack = false
+	can_play = false
 	HP -= 1
 	if get_tree():
 		await get_tree().create_timer(0.5).timeout
 		movements.change_state($movements/hit)
-		can_attack = true
+		can_play = true
 	if HP <= 0:
 		stop()
-		can_move = false
-		can_attack = false
+		can_play = false
+		Global.CutScene = true
 		if get_tree():
 			await get_tree().create_timer(0.5).timeout
 			movements.change_state($movements/death)
