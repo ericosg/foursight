@@ -4,7 +4,8 @@ extends AnimatableBody2D
 @onready var animations: AnimatedSprite2D = $animations
 @onready var reactions := $reactions
 @onready var collision := $collision
-@onready var hit_area := $hit/area
+@onready var area: Area2D = $area
+@onready var hit_area := $area/hit
 
 func _ready() -> void:
 	Global.connect("FrozenChanged", freeze)
@@ -31,8 +32,4 @@ func _on_animations_animation_finished() -> void:
 	
 func _on_hit_body_entered(body: Node2D) -> void:
 	if body is Player and not Global.CutScene:
-		modulate = Settings.NormalColor
-		animations.speed_scale = Settings.NormalSpeedScale
-		reactions.change_state($reactions/attack)
-		(body as Player).hit()
-		
+		reactions.change_state($reactions/react)

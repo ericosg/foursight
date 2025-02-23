@@ -9,3 +9,8 @@ const FrozenSpeedScale := 0.2
 
 const NormalColor := Color(1.0, 1.0, 1.0)
 const NormalSpeedScale := 1.0
+
+const FastColor := Color(1.0, 0.2, 0.8)
+const FastSpeedScale := 3.0
+
+const DEFAULT_FAST_COLLISION_RADIUS := 19.0

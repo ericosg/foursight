@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://fydasoc216lp"]
+[gd_scene load_steps=13 format=3 uid="uid://fydasoc216lp"]
 
 [ext_resource type="PackedScene" uid="uid://badd2n03jhbvo" path="res://assets/sprites/enemy1.aseprite" id="1_m6ahv"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_ub2vd"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/enemy/states/frozen.gd" id="5_72wkd"]
 [ext_resource type="Script" path="res://scripts/enemy/states/dead.gd" id="5_ev6cb"]
 [ext_resource type="Script" path="res://scripts/enemy/states/startup.gd" id="5_xw41t"]
+[ext_resource type="Script" path="res://scripts/enemy/states/react.gd" id="6_eedeb"]
 [ext_resource type="Script" path="res://scripts/enemy/states/stopped.gd" id="7_g018j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m43df"]
@@ -40,6 +41,11 @@ script = ExtResource("5_xw41t")
 stopped_state = NodePath("../stopped")
 animation_name = "Startup"
 
+[node name="react" type="Node" parent="reactions" node_paths=PackedStringArray("attack_state")]
+script = ExtResource("6_eedeb")
+attack_state = NodePath("../attack")
+animation_name = "Startup"
+
 [node name="attack" type="Node" parent="reactions"]
 script = ExtResource("5_3ky4s")
 animation_name = "Attack"
@@ -56,12 +62,12 @@ animation_name = "Frozen"
 script = ExtResource("5_ev6cb")
 animation_name = "Death"
 
-[node name="hit" type="Area2D" parent="."]
+[node name="area" type="Area2D" parent="."]
 
-[node name="area" type="CollisionShape2D" parent="hit"]
+[node name="hit" type="CollisionShape2D" parent="area"]
 position = Vector2(7, -10)
 shape = SubResource("CircleShape2D_sv62q")
 debug_color = Color(0.739754, 0.219158, 1, 0.42)
 
 [connection signal="animation_finished" from="animations" to="." method="_on_animations_animation_finished"]
-[connection signal="body_entered" from="hit" to="." method="_on_hit_body_entered"]
+[connection signal="body_entered" from="area" to="." method="_on_hit_body_entered"]

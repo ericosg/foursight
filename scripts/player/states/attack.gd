@@ -4,11 +4,15 @@ extends State
 @export var sheath_state: State
 @export var fast_state: State
 @export var hard_state: State
+@export var fast_collision_radius := Settings.DEFAULT_FAST_COLLISION_RADIUS
+
+@onready var fast_collision = $"../../area/fast"
 
 var next_state: State
 
 func enter() -> void:
 	super()
+	fast_collision.shape.radius = fast_collision_radius
 	parent.pause()
 	parent.can_show_movements = false
 	next_state = null
@@ -16,6 +20,7 @@ func enter() -> void:
 
 func exit() -> void:
 	super()
+	destroy_enemies()
 	parent.can_show_movements = true
 	parent.play()
 
@@ -36,4 +41,5 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func animation_finished() -> State:
+	# TODO: Would be great if you could stack more than 2 attacks
 	return next_state if next_state else sheath_state

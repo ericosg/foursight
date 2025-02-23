@@ -17,7 +17,7 @@
 size = Vector2(13, 23)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xmd1p"]
-radius = 19.105
+radius = 19.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uly0v"]
 size = Vector2(100, 26)
@@ -97,7 +97,7 @@ animation_name = "Idle"
 script = ExtResource("9_eodg7")
 sheath_state = NodePath("../sheath")
 fast_state = NodePath("../swing")
-hard_state = NodePath("../blast")
+hard_state = NodePath("../slash")
 animation_name = "Swift"
 
 [node name="swing" type="Node" parent="attacks" node_paths=PackedStringArray("sheath_state", "fast_state", "hard_state")]
@@ -111,6 +111,7 @@ animation_name = "Swing"
 script = ExtResource("9_eodg7")
 sheath_state = NodePath("../sheath")
 hard_state = NodePath("../blast")
+fast_collision_radius = 22.0
 animation_name = "Slash"
 
 [node name="double" type="Node" parent="attacks" node_paths=PackedStringArray("sheath_state")]
@@ -118,9 +119,11 @@ script = ExtResource("9_eodg7")
 sheath_state = NodePath("../sheath")
 animation_name = "Double"
 
-[node name="blast" type="Node" parent="attacks" node_paths=PackedStringArray("sheath_state")]
+[node name="blast" type="Node" parent="attacks" node_paths=PackedStringArray("sheath_state", "fast_state", "hard_state")]
 script = ExtResource("10_rdvs8")
 sheath_state = NodePath("../sheath")
+fast_state = NodePath("../slash")
+hard_state = NodePath("../double")
 animation_name = "Blast"
 
 [node name="linked" type="Timer" parent="."]

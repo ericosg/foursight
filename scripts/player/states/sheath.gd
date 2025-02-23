@@ -3,8 +3,11 @@ extends State
 @export var fast_state: State
 @export var hard_state: State
 
+@onready var fast_collision = $"../../area/fast"
+
 func enter() -> void:
 	super()
+	fast_collision.shape.radius = Settings.DEFAULT_FAST_COLLISION_RADIUS
 	parent.can_show_movements = true
 
 func process_input(event: InputEvent) -> State:

@@ -28,6 +28,7 @@ func _ready() -> void:
 	attacks.init(self)
 
 func _unhandled_input(event: InputEvent) -> void:
+	# TODO: After "start" no input should be accepted until the stack ends
 	if not Global.CutScene:
 		if event.is_action_pressed("start"):
 			$linked.stop()
@@ -108,6 +109,6 @@ func hit() -> void:
 			movements.change_state($movements/death)
 
 func _on_linked_timeout() -> void:
-	if Global.IsFrozen():
+	if Global.IsFrozen() and _steps.size() > 0:
 		print("LINK FAILED")
 		_steps[_steps.size() - 1].is_linked = false
